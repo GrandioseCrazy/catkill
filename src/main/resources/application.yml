@@ -12,6 +12,27 @@ spring:
       initial-size: 5
       query-timeout: 600
       max-wait: 300000
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    listener:
+      simple:
+        concurrency: 10 # 消费者数量
+        max-concurrency: 10
+        prefetch: 1 # 消费者每次从队列获取的消息数量
+        auto-startup: true # 消费者自动启动
+        default-requeue-rejected: true # 消费失败自动重新加入队列
+        #启用发送重试
+      direct:
+        retry:
+          enabled: true # 监听重试是否可用
+          initial-interval: 1000 # 第一次和第二次尝试发布或传递消息之间的间隔
+          max-attempts: 3 # 最大重试次数
+          max-interval: 1000 # 最大重试时间间隔
+          multiplier: 1.0 # 应用于上一重试间隔的乘数
 
 
 jedis:
