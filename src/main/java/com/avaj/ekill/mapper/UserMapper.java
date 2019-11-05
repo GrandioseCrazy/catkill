@@ -1,7 +1,9 @@
 package com.avaj.ekill.mapper;
 
 import com.avaj.ekill.model.User;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Long id);
 

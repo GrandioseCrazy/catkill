@@ -1,10 +1,8 @@
-package com.avaj.ekill.mapper;
+package com.avaj.ekill.service;
 
 import com.avaj.ekill.model.Goods;
-import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
-public interface GoodsMapper {
+public interface GoodsService {
     int deleteByPrimaryKey(Long id);
 
     int insert(Goods record);

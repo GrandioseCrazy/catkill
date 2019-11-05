@@ -1,10 +1,8 @@
-package com.avaj.ekill.mapper;
+package com.avaj.ekill.service;
 
 import com.avaj.ekill.model.OrderKill;
-import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
-public interface OrderKillMapper {
+public interface SkillOrderService {
     int deleteByPrimaryKey(Long id);
 
     int insert(OrderKill record);
