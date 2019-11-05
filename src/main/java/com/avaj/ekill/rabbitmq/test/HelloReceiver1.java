@@ -11,6 +11,7 @@ public class HelloReceiver1 {
     @RabbitHandler
     @RabbitListener(queues = "helloQueue")
     public void process(String hello) {
+        System.out.println("我已经在接收数据啦！");
         System.out.println("Receiver1 : " + hello);
     }
 }

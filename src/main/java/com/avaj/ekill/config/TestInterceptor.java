@@ -15,13 +15,13 @@ public class TestInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if (!(handler instanceof HandlerMethod)) {
-            // 不是方法的直接放行
-            return true;
-        }
+//        if (!(handler instanceof HandlerMethod)) {
+//            // 不是方法的直接放行
+//            return true;
+//        }
         System.out.println(request.getRequestURL());
-//        if (request.getRequestURL().equals(""))
-        System.out.println("interceptor tag");
+////        if (request.getRequestURL().equals(""))
+//        System.out.println("interceptor tag");
         return true;
     }
 }

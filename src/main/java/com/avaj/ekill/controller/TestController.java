@@ -1,4 +1,4 @@
-package com.avaj.ekill.Controller;
+package com.avaj.ekill.controller;
 
 import com.avaj.ekill.rabbitmq.test.HelloReceiver1;
 import com.avaj.ekill.rabbitmq.test.HelloSender1;
@@ -27,5 +27,10 @@ public class TestController {
         System.out.println("tag");
         helloReceiver1.process("hello");
         return "receiver success";
+    }
+
+    @RequestMapping("/teste")
+    public String testE() throws Exception {
+     throw new NullPointerException();
     }
 }

@@ -1,4 +1,4 @@
-package com.avaj.ekill.Controller;
+package com.avaj.ekill.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

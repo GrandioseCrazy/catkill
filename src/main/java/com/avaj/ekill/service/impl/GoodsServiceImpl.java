@@ -3,8 +3,11 @@ package com.avaj.ekill.service.impl;
 import com.avaj.ekill.mapper.GoodsMapper;
 import com.avaj.ekill.model.Goods;
 import com.avaj.ekill.service.GoodsService;
+import com.avaj.ekill.vo.GoodsVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class GoodsServiceImpl implements GoodsService {
@@ -14,7 +17,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public int deleteByPrimaryKey(Long id) {
-        return 0;
+        return goodsMapper.deleteByPrimaryKey(id);
     }
 
     @Override
@@ -45,5 +48,15 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public int updateByPrimaryKey(Goods record) {
         return 0;
+    }
+
+    @Override
+    public GoodsVO selectGoodsVOByPrimaryKey(Long goodsId) {
+        return null;
+    }
+
+    @Override
+    public List<GoodsVO> selectAll() {
+        return null;
     }
 }

@@ -26,6 +26,18 @@
     from goods
     where id = #{id,jdbcType=BIGINT}
   </select>
+
+    <select id="selectGoodsVOByPrimaryKey" parameterType="long" resultType="com.avaj.ekill.vo.GoodsVO">
+      SELECT  g.* ,sg.seckill_price ,sg.stock_count,sg.start_time,sg.end_time
+      FROM goods_kill sg left join goods g
+      ON sg.goods_id = g.id WHERE g.id = #{goodsId}
+    </select>
+
+  <select id="selectAll" resultType="com.avaj.ekill.vo.GoodsVO">
+    select * from  goods
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from goods
     where id = #{id,jdbcType=BIGINT}
