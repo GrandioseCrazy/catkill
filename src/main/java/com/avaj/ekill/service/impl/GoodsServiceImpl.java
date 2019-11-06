@@ -22,41 +22,41 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public int insert(Goods record) {
-        return 0;
+        return goodsMapper.insert(record);
     }
 
     @Override
     public int insertSelective(Goods record) {
-        return 0;
+        return goodsMapper.insertSelective(record);
     }
 
     @Override
     public Goods selectByPrimaryKey(Long id) {
-        return null;
+        return goodsMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public int updateByPrimaryKeySelective(Goods record) {
-        return 0;
+        return goodsMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
     public int updateByPrimaryKeyWithBLOBs(Goods record) {
-        return 0;
+        return goodsMapper.updateByPrimaryKeyWithBLOBs(record);
     }
 
     @Override
     public int updateByPrimaryKey(Goods record) {
-        return 0;
+        return goodsMapper.updateByPrimaryKey(record);
     }
 
     @Override
     public GoodsVO selectGoodsVOByPrimaryKey(Long goodsId) {
-        return null;
+        return goodsMapper.selectGoodsVOByPrimaryKey(goodsId);
     }
 
     @Override
     public List<GoodsVO> selectAll() {
-        return null;
+        return goodsMapper.selectAll();
     }
 }

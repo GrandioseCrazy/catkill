@@ -14,31 +14,31 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public int deleteByPrimaryKey(Long id) {
-        return 0;
+        return orderInfoMapper.deleteByPrimaryKey(id);
     }
 
     @Override
     public int insert(OrderInfo record) {
-        return 0;
+        return orderInfoMapper.insert(record);
     }
 
     @Override
     public int insertSelective(OrderInfo record) {
-        return 0;
+        return orderInfoMapper.insertSelective(record);
     }
 
     @Override
     public OrderInfo selectByPrimaryKey(Long id) {
-        return null;
+        return orderInfoMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public int updateByPrimaryKeySelective(OrderInfo record) {
-        return 0;
+        return orderInfoMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
     public int updateByPrimaryKey(OrderInfo record) {
-        return 0;
+        return orderInfoMapper.updateByPrimaryKey(record);
     }
 }

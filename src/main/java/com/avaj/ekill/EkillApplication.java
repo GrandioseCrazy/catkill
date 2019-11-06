@@ -9,6 +9,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class EkillApplication {
 
     public static void main(String[] args) {
+        sys
+
         SpringApplication.run(EkillApplication.class, args);
     }
 

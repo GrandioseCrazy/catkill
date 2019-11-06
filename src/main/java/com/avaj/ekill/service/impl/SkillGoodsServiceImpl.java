@@ -14,31 +14,31 @@ public class SkillGoodsServiceImpl implements SkillGoodsService {
 
     @Override
     public int deleteByPrimaryKey(Long id) {
-        return 0;
+        return goodsKillMapper.deleteByPrimaryKey(id);
     }
 
     @Override
     public int insert(GoodsKill record) {
-        return 0;
+        return goodsKillMapper.insert(record);
     }
 
     @Override
     public int insertSelective(GoodsKill record) {
-        return 0;
+        return goodsKillMapper.insertSelective(record);
     }
 
     @Override
     public GoodsKill selectByPrimaryKey(Long id) {
-        return null;
+        return goodsKillMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public int updateByPrimaryKeySelective(GoodsKill record) {
-        return 0;
+        return goodsKillMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
     public int updateByPrimaryKey(GoodsKill record) {
-        return 0;
+        return goodsKillMapper.updateByPrimaryKey(record);
     }
 }
