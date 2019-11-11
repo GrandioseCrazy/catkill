@@ -4,6 +4,7 @@ import com.avaj.ekill.mapper.GoodsMapper;
 import com.avaj.ekill.model.Goods;
 import com.avaj.ekill.service.GoodsService;
 import com.avaj.ekill.vo.GoodsVO;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,5 +59,9 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public List<GoodsVO> selectAll() {
         return goodsMapper.selectAll();
+    }
+    @Override
+    public List<GoodsVO> listGoodsVO() {
+        return goodsMapper.listGoodsVO();
     }
 }

@@ -1,13 +1,13 @@
 package com.avaj.ekill.service.impl;
 
 import com.avaj.ekill.mapper.OrderKillMapper;
-import com.avaj.ekill.model.GoodsKill;
-import com.avaj.ekill.service.SkillGoodsService;
+import com.avaj.ekill.model.OrderKill;
+import com.avaj.ekill.service.SkillOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SkillOrderServiceImpl implements SkillGoodsService {
+public class SkillOrderServiceImpl implements SkillOrderService {
 
     @Autowired
     OrderKillMapper orderKillMapper;
@@ -18,27 +18,27 @@ public class SkillOrderServiceImpl implements SkillGoodsService {
     }
 
     @Override
-    public int insert(GoodsKill record) {
+    public int insert(OrderKill record) {
         return orderKillMapper.insert(record);
     }
 
     @Override
-    public int insertSelective(GoodsKill record) {
+    public int insertSelective(OrderKill record) {
         return orderKillMapper.insertSelective(record);
     }
 
     @Override
-    public GoodsKill selectByPrimaryKey(Long id) {
+    public OrderKill selectByPrimaryKey(Long id) {
         return orderKillMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int updateByPrimaryKeySelective(GoodsKill record) {
+    public int updateByPrimaryKeySelective(OrderKill record) {
         return orderKillMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public int updateByPrimaryKey(GoodsKill record) {
+    public int updateByPrimaryKey(OrderKill record) {
         return orderKillMapper.updateByPrimaryKey(record);
     }
 }

@@ -2,6 +2,7 @@ package com.avaj.ekill.service;
 
 import com.avaj.ekill.model.Goods;
 import com.avaj.ekill.vo.GoodsVO;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -23,4 +24,6 @@ public interface GoodsService {
     GoodsVO selectGoodsVOByPrimaryKey(Long goodsId);
 
     List<GoodsVO> selectAll();
+
+    List<GoodsVO> listGoodsVO();
 }
