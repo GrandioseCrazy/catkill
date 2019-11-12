@@ -2,6 +2,7 @@ package com.avaj.ekill.mapper;
 
 import com.avaj.ekill.model.GoodsKill;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface GoodsKillMapper {
@@ -16,4 +17,6 @@ public interface GoodsKillMapper {
     int updateByPrimaryKeySelective(GoodsKill record);
 
     int updateByPrimaryKey(GoodsKill record);
+
+
 }

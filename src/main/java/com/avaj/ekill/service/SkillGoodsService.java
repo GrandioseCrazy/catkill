@@ -14,4 +14,5 @@ public interface SkillGoodsService {
     int updateByPrimaryKeySelective(GoodsKill record);
 
     int updateByPrimaryKey(GoodsKill record);
+
 }

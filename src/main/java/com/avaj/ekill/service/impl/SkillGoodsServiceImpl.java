@@ -41,4 +41,6 @@ public class SkillGoodsServiceImpl implements SkillGoodsService {
     public int updateByPrimaryKey(GoodsKill record) {
         return goodsKillMapper.updateByPrimaryKey(record);
     }
+
+
 }

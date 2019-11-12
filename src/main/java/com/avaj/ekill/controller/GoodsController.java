@@ -116,4 +116,39 @@ public class GoodsController {
         return map;
 
     }
+
+    @ApiOperation("单个商品详情 返回HTML")
+    @GetMapping(value = "/to_detail/{goodsId}", produces = "text/html")
+    @ResponseBody
+    public String detail(HttpServletRequest request, HttpServletResponse response, Model model, User user,
+                        @PathVariable("goodsId") long goodsId) {
+        model.addAttribute("user",user);
+
+        // 取缓存
+        String html = redisService.get(GoodsKey.getGoodsDetail, "" + goodsId, String.class);
+        if (!StringUtils.isEmpty(html)) {
+            return html;
+        }
+
+        GoodsVO goodsVO = goodsService.selectGoodsVOByPrimaryKey(goodsId);
+        model.addAttribute("goods",goodsVO);
+
+        long startAt = goodsVO.getStartTime().getTime();
+        long endAt = goodsVO.getEndTime().getTime();
+
+        Map<String ,Integer> map = checkTime(startAt,endAt);
+
+        model.addAttribute("seckillStatus", map.get("seckillStatus"));
+        model.addAttribute("remainSeconds", map.get("remainSeconds"));
+
+        SpringWebContext ctx = new SpringWebContext(request, response, request.getServletContext(),
+                request.getLocale(), model.asMap(), applicationContext);
+        // 手动渲染html
+        html = thymeleafViewResolver.getTemplateEngine().process("goods_detail",ctx);
+
+        if (!StringUtils.isEmpty(html)) {
+            redisService.set(GoodsKey.getGoodsDetail, "" + goodsId, html);
+        }
+        return html;
+    }
 }

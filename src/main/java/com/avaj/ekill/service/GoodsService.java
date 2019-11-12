@@ -1,6 +1,7 @@
 package com.avaj.ekill.service;
 
 import com.avaj.ekill.model.Goods;
+import com.avaj.ekill.model.GoodsKill;
 import com.avaj.ekill.vo.GoodsVO;
 import org.apache.ibatis.annotations.Select;
 
@@ -26,4 +27,8 @@ public interface GoodsService {
     List<GoodsVO> selectAll();
 
     List<GoodsVO> listGoodsVO();
+    // 减库存
+    boolean reduceStock(GoodsVO goods);
+
+    void resetStock(List<GoodsVO> goodsList);
 }

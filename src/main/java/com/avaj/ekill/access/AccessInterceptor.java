@@ -6,7 +6,6 @@ import com.avaj.ekill.redis.AccessKey;
 import com.avaj.ekill.redis.RedisService;
 import com.avaj.ekill.result.CodeMsg;
 import com.avaj.ekill.result.Result;
-import com.avaj.ekill.service.impl.SeckillService;
 import com.avaj.ekill.service.impl.SeckillUSerService;
 import com.avaj.ekill.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,9 +43,11 @@ public class AccessInterceptor extends HandlerInterceptorAdapter {
             }
 
             int seconds = accessLimit.seconds();
+            // 获取注解设定的接口最大访问次数
             int maxCount = accessLimit.maxCount();
             boolean needLogin = accessLimit.needLogin();
             String key = request.getRequestURI();
+            //判断是否需要登录
             if (needLogin) {
                 if (user == null) {
                     render(response, CodeMsg.SERVER_ERROR);
@@ -60,10 +61,13 @@ public class AccessInterceptor extends HandlerInterceptorAdapter {
             // 查询访问的次数
             Integer count = redisService.get(accessKey,key,Integer.class);
             if (count == null) {
+                // 设置key及超时时间1s
                 redisService.set(accessKey,key,1);
             } else if (count < maxCount) {
+                // 在允许范围指定超时时间内内每有一次请求就+1次访问次数
                 redisService.incr(accessKey,key);
             } else {
+                // 否则返回超过最大限制
                 render(response,CodeMsg.ACCESS_LIMIT_REACHED);
                 return false;
             }

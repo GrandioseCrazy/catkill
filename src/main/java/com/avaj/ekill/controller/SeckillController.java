@@ -1,5 +1,7 @@
 package com.avaj.ekill.controller;
 
+import com.avaj.ekill.access.AccessLimit;
+import com.avaj.ekill.model.User;
 import com.avaj.ekill.rabbitmq.MQSender;
 import com.avaj.ekill.redis.GoodsKey;
 import com.avaj.ekill.redis.OrderKey;
@@ -15,10 +17,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -73,7 +72,15 @@ public class SeckillController implements InitializingBean {
         return Result.success(true);
     }
 
-//    @ApiOperation("秒杀接口")
-//    @PostMapping("/{path}/seckill")
-//    @ResponseBody
+    @ApiOperation("秒杀接口")
+    @PostMapping("/{path}/seckill")
+    @ResponseBody
+    @AccessLimit(seconds = 5, maxCount = 5)
+    public Result<Integer> seckill(User user, @RequestParam("goodsId") long goodsId,
+                                   @PathVariable("path") String path) {
+
+        // 验证path
+//        boolean check = seckillService.
+    return  null;
+    }
 }

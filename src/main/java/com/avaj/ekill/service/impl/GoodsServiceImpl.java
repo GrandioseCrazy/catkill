@@ -1,7 +1,10 @@
 package com.avaj.ekill.service.impl;
 
+import com.avaj.ekill.access.AccessLimit;
+import com.avaj.ekill.mapper.GoodsKillMapper;
 import com.avaj.ekill.mapper.GoodsMapper;
 import com.avaj.ekill.model.Goods;
+import com.avaj.ekill.model.GoodsKill;
 import com.avaj.ekill.service.GoodsService;
 import com.avaj.ekill.vo.GoodsVO;
 import org.apache.ibatis.annotations.Select;
@@ -63,5 +66,23 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public List<GoodsVO> listGoodsVO() {
         return goodsMapper.listGoodsVO();
+    }
+
+    @Override
+    public boolean reduceStock(GoodsVO goods) {
+        GoodsKill goodsKill = new GoodsKill();
+        goodsKill.setId(goods.getId());
+        int ret = goodsMapper.reduceStock(goodsKill);
+        return ret > 0;
+    }
+
+    @Override
+    public void resetStock(List<GoodsVO> goodsList) {
+        for (GoodsVO goods : goodsList) {
+            GoodsKill goodsKill = new GoodsKill();
+            goodsKill.setId(goods.getId());
+            goodsKill.setStockCount(goods.getStockCount());
+            goodsMapper.resetStock(goodsKill);
+        }
     }
 }
